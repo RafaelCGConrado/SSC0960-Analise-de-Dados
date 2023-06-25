@@ -108,7 +108,7 @@ public class Main{
         }
 
         catch (FileNotFoundException erro){
-            System.out.println("Nao abriu o arquivo");
+            System.out.println("Falha no processamento do arquivo");
 
 
         }
