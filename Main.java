@@ -2,7 +2,7 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 
-public class Main{
+    class Main{
     public static class Country{
         String _country;
         int _confirmed;
@@ -97,11 +97,12 @@ public class Main{
             
             int activeCount = 0;
             Country[] maioresActive = new Country[n[1]];
-            maioresActive[0] = new Country("NULO,-1,-1,-1,-1");
+            if(n[1] != 0) maioresActive[0] = new Country("NULO,-1,-1,-1,-1");
             
             int confirmedCount = 0;
             Country[] maioresConfirmed = new Country[n[3]];
-            maioresConfirmed[0] = new Country("NULO,-1,-1,-1,-1");
+            
+            if(n[3] != 0) maioresConfirmed[0] = new Country("NULO,-1,-1,-1,-1");
 
             while(le_arquivo.hasNextLine()){
                 String linha = le_arquivo.nextLine();
@@ -132,7 +133,7 @@ public class Main{
                     maioresConfirmed[confirmedCount] = c;
                     confirmedCount++;
                 }
-                else if (c._confirmed > maioresConfirmed[0]._confirmed) {
+                else if (n[3] != 0 && c._confirmed > maioresConfirmed[0]._confirmed) {
                     //escrever na primeira posicao
                     maioresConfirmed[0] = c;
                 }
@@ -155,13 +156,15 @@ public class Main{
             // Sort maioresActive por "Confirmed" ...
             // Printar os "death" dos n3 países com menor confirmed ...
             maioresActive = sort(maioresActive, n[1], "Confirmed");
-            for(int i = 0; i < n[2]; i++) System.out.println(maioresActive[i]._death);
+            for(int i = 0; i < n[2]; i++){
+                if(n[1] >= n[2])System.out.println(maioresActive[i]._death);
+            }
 
             // 3)
             // Sort maioresConfirmd por "country" ...
             // Printar maioresConfirmed ...
             maioresConfirmed = sort(maioresConfirmed, n[3], "Country");
-            for(int i = 0; i < n[3]; i++) maioresConfirmed[i].print();
+            for(int i = 0; i < n[3]; i++) System.out.println(maioresConfirmed[i]._country);
 
             le_arquivo.close();
         }
