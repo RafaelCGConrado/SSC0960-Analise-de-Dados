@@ -156,9 +156,10 @@ import java.io.FileNotFoundException;
             // Sort maioresActive por "Confirmed" ...
             // Printar os "death" dos n3 países com menor confirmed ...
             maioresActive = sort(maioresActive, n[1], "Confirmed");
-            for(int i = 0; i < n[2]; i++){
-                if(n[1] >= n[2])System.out.println(maioresActive[i]._death);
-            }
+
+            if(n[2] > n[1]) n[2] = n[1];
+            for(int i = 0; i < n[2]; i++) System.out.println(maioresActive[i]._death);
+            
 
             // 3)
             // Sort maioresConfirmd por "country" ...
