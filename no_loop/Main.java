@@ -1,10 +1,11 @@
+package no_loop;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.function.*;
 import java.io.*;
 
 /*
-     * Trabalho 2 de Programação Funcional - Versão com laço (sem Stream)
+     * Trabalho 2 de Programação Funcional - Versão sem laço (com stream)
      *  Alunos:
      *  João Pedro Buzzo Silva - 10425191
      *  Rafael Comitre Garcia Conrado - 13671806
@@ -44,7 +45,6 @@ class Main{
         }
         
         
-        // Função que retorna o 'confirmed' de um país:
         // Função que retorna o campo Confirmed do país
         public int getConfirmed(){
             return this._confirmed;
@@ -56,12 +56,12 @@ class Main{
             return this._recovery;
         }
 
-        // Função que retorna o campo Death do país        // Função que retorna o 'death' de um país:
+        // Função que retorna o campo Death do país 
         public int getDeath(){
             return this._death;
         }
         
-        //Método usado para printar cada atributo do país:
+        //Função usada para printar cada atributo do país:
         public void print(){
             System.out.println(this._country + ", "
             + Integer.toString(this._confirmed) + ", "
@@ -71,16 +71,12 @@ class Main{
         }
     }       
 
-    // Função recebe uma linha e a transforma em um objeto 'país' ou 'country':
+    // Função que recebe uma linha e a transforma em um objeto Country:
     private static Function<String, Country> mapToCountry = (line) ->{
         Country c = new Country(line);
         
         return c;
     };
-
-
-
-
 
     //Método responsável por ler o stream do arquivo de dados
     //e retornar em uma lista do tipo Country.
@@ -101,7 +97,7 @@ class Main{
         }
 
         catch(IOException e){
-            System.out.println("")
+            System.out.println("Erro no processamento");
         }
 
         return inputList;
@@ -112,6 +108,7 @@ class Main{
     
     public static void main(String[] args){
 
+        //Leitura dos 4 números
         Scanner input = new Scanner(System.in);
         int n1, n2, n3, n4;
         
@@ -122,10 +119,9 @@ class Main{
 
         input.close();
 
-
+        //Leitura do arquivo e criação da lista countries
         List<Country> countries = processInput("dados.csv");
         
-
         // Funcionalidade 1)
         int sum = 0;
         
@@ -140,22 +136,20 @@ class Main{
         // Funcionalidade 2)
         countries
             .stream()
-            .sorted(Comparator.comparing(Country::getActive).reversed())
+            .sorted(Comparator.comparing(Country::getActive).reversed()) //ordena inversamente
             .limit(n2)
-            .sorted(Comparator.comparing(Country::getConfirmed))
-            .limit(n3)
+            .sorted(Comparator.comparing(Country::getConfirmed)) //ordena por confirmed
+            .limit(n3) 
             .forEach((Country c) -> System.out.println(c.getDeath()));
         
         
         // Funcionalidade 3)
         countries
             .stream()
-            .sorted(Comparator.comparing(Country::getConfirmed).reversed())
+            .sorted(Comparator.comparing(Country::getConfirmed).reversed()) //ordena inversamente
             .limit(n4)
-            .sorted(Comparator.comparing(Country::getCountry))
+            .sorted(Comparator.comparing(Country::getCountry)) //Ordena por country
             .forEach((Country c) -> System.out.println(c.getCountry()));
-
-
 
         
     }
