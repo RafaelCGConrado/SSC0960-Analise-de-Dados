@@ -1,4 +1,4 @@
-package no_loop;
+
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.function.*;
