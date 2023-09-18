@@ -6,9 +6,9 @@ import java.io.FileNotFoundException;
     /*
      * Trabalho 2 de Programação Funcional - Versão com laço (sem Stream)
      *  Alunos:
-     *  João Pedro Buzzo Silva - 10425191
-     *  Rafael Comitre Garcia Conrado - 13671806
-     *  Victor Hugo Trigolo Amaral - 12688487
+     *  João Pedro Buzzo Silva
+     *  Rafael Comitre Garcia Conrado
+     *  Victor Hugo Trigolo Amaral
      */
 
 
